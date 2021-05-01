@@ -204,7 +204,7 @@ def create_app():
 
             downloadScript(url, name)
 
-            message = " دانلود جلسه" + name + " ناموفق بود، لطفا مجددا تلاش نمایید."
+            message = " دانلود جلسه " + name + " ناموفق بود، لطفا مجددا تلاش نمایید."
 
             # TODO: download meeting and dinamically show progress
             # https://stackoverflow.com/questions/40963401/flask-dynamic-data-update-without-reload-page/40964086
