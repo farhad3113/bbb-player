@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>دانلود و پخش جلسات BBB</title>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-rtl.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/vazir.css') }}">
+	</head>
+
+	<style>
+		body {
+			font-family: Vazir;
+		}
+	</style>
+
+	<body>
+		<nav class="navbar fixed-top navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">
+				<img src="{{ url_for('static', filename='logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+				دانلود و پخش جلسات بیگ بلو باتن
+			</a>
+			<a class="nav-link" href="#">راهنما</a>	
+		</nav>
+
+		<div class="container">
+			<br><br><br>
+			<div class="dl-new-meeting card">
+				<h5 class="card-header">دانلود جلسه</h5>
+				<div class="card-body">
+					<p class="message card-text"><b>{{ message }}</b></p>
+
+					<form action="{{ url_for('api_dl_meeting') }}" method="POST" onsubmit="return startLoader()">
+						<div class="form-group">
+							<label for="meetingUrl">لینک جلسه</label>
+							<input type="text" name="meeting-url" class="form-control" id="meetingUrl" aria-describedby="meetingUrlHelp">
+							<small id="meetingUrlHelp" class="form-text text-muted">لینک پخش جلسه را وارد کنید</small>
+						</div>
+						<div class="form-group">
+							<label for="meetingName">نام جلسه</label>
+							<input type="text" name="meeting-name" class="form-control" id="meetingName" aria-describedby="meetingNameHelp">
+							<small id="meetingNameHelp" class="form-text text-muted">یک نام جهت دسترسی آینده وارد کنید.</small>
+						</div>
+						<div id="downloadButtonDiv">
+							<button type="submit" class="btn btn-primary">دانلود</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+			<br>
+
+			<table class="table table-striped table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>#</th>
+						<th>جلسات دانلود شده</th>
+					</tr>
+				</thead>
+				<tbody class="meeting-links">
+					{% for link, name in meetingLinks %}
+					<tr>
+						<td>{{ loop.index }}</td>
+						<td>
+							<a href="{{ link }}">{{ name }}</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<hr>
+		</div>
+
+		<script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/loader.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+	</body>
+</html>
