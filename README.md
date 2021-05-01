@@ -15,8 +15,4 @@ run `setup.bat`
 
 After setup completed, press Enter and exit setup
 
-<<<<<<< HEAD
 run `run.bat` and open [localhost:5000](http://localhost:5000).
-=======
-run `run.bat` and open [localhost:5000](http://localhost:5000).
->>>>>>> e11941c5bb659f031e6c0552fb58c42160a6f194
